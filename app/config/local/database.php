@@ -22,10 +22,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'ec2-54-149-232-162.us-west-2.compute.amazonaws.com',
+			'host'      => 'drinking-buddy-api.ceaqim6owgld.us-west-2.rds.amazonaws.com:3306',
 			'database'  => 'drink_buddy_api',
-			'username'  => 'drink-api',
-			'password'  => '',
+			'username'  => 'drink_api',
+			'password'  => 'drinkingbuddy',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
