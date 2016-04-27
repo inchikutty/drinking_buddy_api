@@ -54,9 +54,9 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'drink-buddy-api',
-			'username'  => 'drink_api',
+			'host'      => 'ec2-54-149-232-162.us-west-2.compute.amazonaws.com',
+			'database'  => 'drink_buddy_api',
+			'username'  => 'drink-api',
 			'password'  => '',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
