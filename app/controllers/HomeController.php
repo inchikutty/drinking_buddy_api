@@ -48,7 +48,7 @@ class HomeController extends BaseController {
 			$sensor = "gyroscope";
 		}
 		if ($sensor){
-			DB::table($sensor)->select([
+			$results = DB::table($sensor)->select([
 				'id',
 				'x',
 				'y',
@@ -57,7 +57,7 @@ class HomeController extends BaseController {
 				'time'
 			])
 			->get();
-		 $results = $sensor.'/x='.$val1.'/time='.$time.'/date='.$date;
+			$results->sensor = $sensor;
 		 return Response::json($results, 200);
 	 }
 	}
