@@ -19,8 +19,7 @@ class HomeController extends BaseController {
 	{
 		return View::make('hello');
 	}
-	public function postToDB($id, $val1, $val2, $val3, $time, $date){
-		$identifier = 0;
+	public function postToDB( $id, $val1, $val2, $val3, $time, $date){
 		$sensor = null;
 		if($id == "acce"){
 			$sensor ="accelerometer";
@@ -30,7 +29,6 @@ class HomeController extends BaseController {
 		}
 		if ($sensor){
 			DB::table($sensor)->insert([
-				'id' => $identifier,
 				'x' => $val1,
 			  'y' => $val2,
 				'z' => $val3,
@@ -38,7 +36,6 @@ class HomeController extends BaseController {
 				'date' => $date
 			]);
 		 $results = $sensor.'/x='.$val1.'/time='.$time.'/date='.$date;
-		 $identifier++;
 		 return Response::json($results, 200);
 	 }
 	}
