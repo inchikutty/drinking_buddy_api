@@ -22,7 +22,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'drinking-buddy-api.ceaqim6owgld.us-west-2.rds.amazonaws.com:3306',
+			'host'      => 'drinking-buddy-api.ceaqim6owgld.us-west-2.rds.amazonaws.com',
 			'database'  => 'drink_buddy_api',
 			'username'  => 'drink_api',
 			'password'  => 'drinkingbuddy',
