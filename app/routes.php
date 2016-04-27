@@ -12,3 +12,4 @@
 */
 Route::get('/', ['uses' => 'HomeController@showWelcome']);
 Route::post('/api/v1/{id}/x={val1}/y={val2}/z={val3}/time={time}/date={date}', ['uses'=> 'HomeController@postToDB'] );
+Route::get('/api/v1/{id}', ['uses'=> 'HomeController@getData'] );

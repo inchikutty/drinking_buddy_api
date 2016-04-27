@@ -39,5 +39,27 @@ class HomeController extends BaseController {
 		 return Response::json($results, 200);
 	 }
 	}
+	public function getData($id){
+		$sensor = null;
+		if($id == "acce"){
+			$sensor ="accelerometer";
+		}
+		elseif($id == "gyro"){
+			$sensor = "gyroscope";
+		}
+		if ($sensor){
+			DB::table($sensor)->select([
+				'id',
+				'x',
+				'y',
+				'z',
+				'date',
+				'time'
+			])
+			->get();
+		 $results = $sensor.'/x='.$val1.'/time='.$time.'/date='.$date;
+		 return Response::json($results, 200);
+	 }
+	}
 
 }
