@@ -57,7 +57,7 @@ class HomeController extends BaseController {
 				'time'
 			])
 			->get();
-			$results->sensor = $sensor;
+			//$results->sensor = $sensor;
 		 return Response::json($results, 200);
 	 }
 	}
