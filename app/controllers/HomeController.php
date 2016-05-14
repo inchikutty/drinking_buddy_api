@@ -19,7 +19,8 @@ class HomeController extends BaseController {
 	{
 		return View::make('hello');
 	}
-	public function postToDB( $id, $val1, $val2, $val3, $time, $date){
+
+	public function postToDB( $id, $val1, $val2, $val3, $time, $date , $color/*,$observed_action*/){
 		$sensor = null;
 		if($id == "acce"){
 			$sensor ="accelerometer";
@@ -33,7 +34,9 @@ class HomeController extends BaseController {
 			  'y' => $val2,
 				'z' => $val3,
 				'time' => $time,
-				'date' => $date
+				'date' => $date,
+				'color' => $color,
+				'observed_action'=> 'testing'
 			]);
 		 $results = $sensor.'/x='.$val1.'/time='.$time.'/date='.$date;
 		 return Response::json($results, 200);
@@ -49,12 +52,7 @@ class HomeController extends BaseController {
 		}
 		if ($sensor){
 			$results = DB::table($sensor)->select([
-				'id',
-				'x',
-				'y',
-				'z',
-				'date',
-				'time'
+				'*'
 			])
 			->get();
 			//$results->sensor = $sensor;
