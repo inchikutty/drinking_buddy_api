@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddActionColorToTables1 extends Migration {
+class AddActionColorToTableAcce extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -13,10 +13,9 @@ class AddActionColorToTables1 extends Migration {
 	public function up()
 	{
 		Schema::table('accelerometer', function ($table) {
-        $table->string('color');
 				$table->string('observed_action');
 				$table->string('computed_action');
-    });
+		});
 	}
 
 	/**
