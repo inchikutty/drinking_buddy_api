@@ -42,6 +42,8 @@ class HomeController extends BaseController {
 		 return Response::json($results, 200);
 	 }
 	}
+
+
 	public function getData($id){
 		$sensor = null;
 		if($id == "acce"){
@@ -59,5 +61,22 @@ class HomeController extends BaseController {
 		 return Response::json($results, 200);
 	 }
 	}
+
+  public function deleteByObservedAction($action, $table){
+		$sensor = null;
+		if($table == "acce"){
+			$sensor ="accelerometer";
+		}
+		elseif($table == "gyro"){
+			$sensor = "gyroscope";
+		}
+		if ($sensor){
+		    DB::table($sensor)->where('observed_action','=',$action)->delete();
+		    return Response::json("deleted", 200);
+	  }
+	  else{
+		  return Response::json("invalid arguments", 200);
+	  }
+
 
 }
