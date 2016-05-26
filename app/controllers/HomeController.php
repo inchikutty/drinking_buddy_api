@@ -62,4 +62,75 @@ class HomeController extends BaseController {
 	 }
 	}
 
+  public function addUser( $username, $firstname, $lastname ){
+		$duplicate = null;
+		$un = null;
+		$duplicate = DB::table('users')
+		  ->select(['users.username AS username'])
+			->get();
+			$duplicate = (object)$duplicate;
+			foreach ($duplicate as $usr) {
+			  if( $username == $usr->username ){
+				  $un = $username;
+			  }
+			}
+		if ( $username != $un ){
+			DB::table('users')->insert([
+				'username' => $username,
+				'firstname' => $firstname,
+				'lastname' => $lastname
+			]);
+			$results = "user added";
+		}else{
+			$results = "username already exists";
+		}
+		return Response::json($results, 200);
+	}
+
+	public function observation( $user_id, $action, $color, $sense, $x, $y, $z ){
+		$date = date("Y-m-d");               // 2015-12-19
+    $time = date("h:i:s");               // 10:10:16
+		$sensor = null;
+		if($sense == "acce"){
+			$sensor ="accelerometer";
+		}
+		else if($sense == "gyro"){
+			$sensor = "gyroscope";
+		}
+		if ($sensor){
+			DB::table('observation')->insert([
+				'user_id' => $user_id,
+				'sensor' => $sensor,
+				'observed_action' => $action,
+				'color' => $color,
+				'x' => $x,
+				'y' => $y,
+				'z' => $z,
+				'date' => $date,
+				'time' => $time
+			]);
+		 $results = $sensor.'/x='.$x.'/time='.$time.'/date='.$date;
+		 return Response::json($results, 200);
+	 }
+
+	}
+
+	public function data(){
+		$results =  DB::table('observation')->select([
+			'id',
+			'user_id',
+			'sensor',
+			'observed_action',
+			'color',
+			'x',
+			'y',
+			'z',
+			'date',
+			'time'
+			])
+			->get();
+
+	 return Response::json( $results, 200 );
+	}
+
 }
