@@ -87,9 +87,12 @@ class HomeController extends BaseController {
 		return Response::json($results, 200);
 	}
 
-	public function observation( $user_id, $action, $color, $sense, $x, $y, $z ){
-		$date = date("Y-m-d");               // 2015-12-19
-    $time = date("h:i:s");               // 10:10:16
+	public function observation( $user_id, $action, $color, $sense, $x, $y, $z, $timestamp ){
+		$datetime = explode(" ",$timestamp);
+		$date = $datetime[0];
+		$time = $datetime[1];
+		/*$date = date("Y-m-d", $time);               // 2015-12-19
+    $time = date("h:i:s.u", $time); */           // 10:10:16
 		$sensor = null;
 		if($sense == "acce"){
 			$sensor ="accelerometer";
