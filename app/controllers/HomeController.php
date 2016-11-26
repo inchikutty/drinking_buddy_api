@@ -135,5 +135,22 @@ class HomeController extends BaseController {
 
 	 return Response::json( $results, 200 );
 	}
+	public function dataNew(){
+		$results =  DB::table('observationMilli')->select([
+			'id',
+			'user_id',
+			'sensor',
+			'observed_action',
+			'color',
+			'x',
+			'y',
+			'z',
+			'date',
+			'time'
+			])
+			->get();
+
+	 return Response::json( $results, 200 );
+	}
 
 }
