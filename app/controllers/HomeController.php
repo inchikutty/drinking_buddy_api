@@ -92,7 +92,7 @@ class HomeController extends BaseController {
 		$date = $datetime[0];
 		$time = $datetime[1];
 		/*$date = date("Y-m-d", $time);               // 2015-12-19
-    $time = date("h:i:s.u", $time); */           // 10:10:16
+    $time = date("h:i:s.u", $time); */          // 10:10:16
 		$sensor = null;
 		if($sense == "acce"){
 			$sensor ="accelerometer";
@@ -101,7 +101,7 @@ class HomeController extends BaseController {
 			$sensor = "gyroscope";
 		}
 		if ($sensor){
-			DB::table('observation')->insert([
+			DB::table('observationMilli')->insert([
 				'user_id' => $user_id,
 				'sensor' => $sensor,
 				'observed_action' => $action,
