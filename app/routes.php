@@ -17,3 +17,5 @@ Route::post('/api/v1/user:{username}/firstname:{fn}/lastname:{ln}', ['uses'=> 'H
 Route::post('/api/v1/user_id:{user}/action:{action}/color:{color}/sensor:{sensor}/x:{val1}/y:{val2}/z:{val3}/time:{timenow}',['uses'=> 'HomeController@observation']);
 Route::post('api/v1/data',[ 'uses' => 'HomeController@data']);
 Route::post('api/v1/dataNew',[ 'uses' => 'HomeController@dataNew']);
+Route::post('/api/compute/user_id:{user}/start_time:{start_time}/start_position:{start_position}/x:{val1}/y:{val2}/z:{val3}/time:{timenow}',['uses'=> 'HomeController@inputData']);
+Route::post('/api/v1/table:{table}',['uses'=> 'HomeController@truncateTable']);

@@ -115,6 +115,7 @@ class HomeController extends BaseController {
 		 return Response::json($results, 200);
 	 }
 
+
 	}
 
 	public function data(){
@@ -151,5 +152,35 @@ class HomeController extends BaseController {
 
 	 return Response::json( $results, 200 );
 	}
+
+// function to input data to inputData table
+public function inputData( $user_id, $start_time, $start_position, $x, $y, $z, $timestamp ){
+	$date = date("Y-m-d");
+	$time = $timestamp;
+	/*$date = date("Y-m-d", $time);               // 2015-12-19
+	$time = date("h:i:s.u", $time); */          // 10:10:16
+
+	if ($start_position){
+		DB::table('inputDataTable')->insert([
+			'user_id' => $user_id,
+			'start_time' => $start_time,
+			'start_position' => $start_position,
+			'x' => $x,
+			'y' => $y,
+			'z' => $z,
+			'date' => $date,
+			'time' => $time
+		]);
+	 $results = $start_position.'/x='.$x.'/time='.$time.'/date='.$date;
+	 return Response::json($results, 200);
+ }
+ //function to truncate tables
+ public function truncateTable($table){
+	 DB::table($table)->truncate();
+	 }
+ }
+
+
+}
 
 }
