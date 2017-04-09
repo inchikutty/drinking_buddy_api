@@ -154,10 +154,11 @@ class HomeController extends BaseController {
 	}
 
 // function to input data to inputData table
-public function inputData( $user_id, $start_time, $start_position, $x, $y, $z, $timestamp ){
+public function inputData( $user_id, $start_time, $start_position, $x, $y, $z, $timestamp )
+{
 		$date = date("Y-m-d");
 		$time = $timestamp;
-		if ($start_position){
+		//if ($start_position){
 			DB::table('inputDataTable')->insert([
 				'user_id' => $user_id,
 				'start_time' => $start_time,
@@ -170,15 +171,17 @@ public function inputData( $user_id, $start_time, $start_position, $x, $y, $z, $
 			]);
 	 	$results = $start_position.'/x='.$x.'/time='.$time.'/date='.$date;
 	 	return Response::json($results, 200);
- 	}
+ 	//}
 }
  //function to truncate tables
- public function truncateTable($table){
+ public function truncateTable($table)
+ {
 	 DB::table($table)->truncate();
 	 return Response::json('table truncated', 200);
  }
 
- public function getInputData(){
+ public function getInputData()
+ {
 	 $results =  DB::table('inputDataTable')->select([
 		 'id',
 		 'user_id',
