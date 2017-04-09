@@ -178,7 +178,7 @@ public function inputData( $user_id, $start_time, $start_position, $x, $y, $z, $
  public function truncateTable($table){
 	 DB::table($table)->truncate();
 	 	return Response::json('table truncated', 200);
-}
+ }
 
  public function getInputData(){
 	 $results =  DB::table('inputDataTable')->select([
