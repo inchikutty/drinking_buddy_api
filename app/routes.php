@@ -20,4 +20,4 @@ Route::post('api/v1/dataNew',[ 'uses' => 'HomeController@dataNew']);
 //Compute API's
 Route::post('/api/compute/user_id:{user}/start_time:{start_time}/start_position:{start_position}/x:{val1}/y:{val2}/z:{val3}/time:{timenow}',['uses'=> 'HomeController@inputData']);
 Route::post('/api/compute/table:{table}',['uses'=> 'HomeController@truncateTable']);
-Route::post('api/compute/getInput',[ 'uses' => 'HomeController@getInputData']);
+Route::get('api/compute/getInput',[ 'uses' => 'HomeController@getInputData']);
